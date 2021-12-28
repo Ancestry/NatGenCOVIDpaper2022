@@ -1,0 +1,100 @@
+---
+title: "The phenoreportr Tutorial: Development Documentation"
+author: "Andrey Smelter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The phenoreportr Tutorial: Development Documentation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Installation
+
+First clone the repo from github:
+
+```bash
+$ git clone git@github.com:Ancestry/NatGenCOVIDpaper2022.git
+$ cd clean_pheno_package/phenoreportr
+```
+
+Next, install the package from R console using `devtools` R package:
+
+```R
+> install.packages("devtools")
+> library(devtools)
+> devtools::install()
+```
+
+## Documentation
+
+### Documenting R functions
+
+We use `roxygen2` R package to document available R functions. 
+In order to create documentation files for available functions first use `roxygen2` documentation style.
+Invoke `devtools::document()` command for your package, this will build documentation files under `man`
+directory as well as refresh `NAMESPACE` file.
+
+```{r, engine = "bash", eval = FALSE}
+> devtools::document()
+Updating phenoreportr documentation
+Loading phenoreportr
+Writing NAMESPACE
+```
+
+### Building package documentation
+
+We use `pkgdown` R package to build documentation for entire package.
+This allow us to build static html documentation under `docs` directory
+using available `*.Rd`, `*.Rmd`, and `README.md` files under 
+`man` and `vignettes` directories.
+
+First, set option to disable external CRAN lookup:
+
+```{r, engine = "bash", eval = FALSE}
+> options(pkgdown.internet = FALSE)
+```
+
+Next, invoke `pkgdown::build_site()` command to build package documentation:
+
+```{r, engine = "bash", eval = FALSE}
+> pkgdown::build_site()
+Installing package into temporary library
+Building pkgdown site
+Reading from: '/phenoreportr'
+Writing to:   '/phenoreportr/docs'
+Initialising site
+Building home
+Building function reference
+Reading 'man/extract_questions.Rd'
+Reading 'man/load_data.Rd'
+Reading 'man/load_ethnicity.Rd'
+Reading 'man/load_pheno.Rd'
+Reading 'man/load_survey.Rd'
+Reading 'man/phenoreportr.Rd'
+Reading 'man/phenotype_sample_size_by_response_plot.Rd'
+Reading 'man/prevalence_plot.Rd'
+Reading 'man/prevalence_table.Rd'
+Reading 'man/response_combined_table.Rd'
+Reading 'man/response_sample_size_by_question_table.Rd'
+Building articles
+Reading 'vignettes/development.Rmd'
+Writing 'articles/development.html'
+Reading 'vignettes/tutorial.Rmd'
+Building news
+DONE
+```
+
+### Updating package documentation
+
+Documentation is uploaded to github pages. 
+To update it commit changes in `docs` directory to master branch of `phenoreportr` package.
+
+
+
+
+
+
+
+
+
