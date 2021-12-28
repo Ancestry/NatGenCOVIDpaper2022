@@ -1,0 +1,32 @@
+Package: phenoreportr
+Title: Phenotype cleaner and report generator
+Version: 0.2.0
+Authors@R: c(person("Genevieve", "Roberts", email = "groberts@ancestry.com",
+                    role = c("aut")),
+             person("Andrey", "Smelter", email = "asmelter@ancestry.com",
+                    role = c("aut", "cre")))
+Description: Phenotype cleaner and report generator.
+URL: https://github.com/Ancestry/NatGenCOVIDpaper2022/clean_pheno_package/phenoreportr
+BugReports: https://github.com/Ancestry/NatGenCOVIDpaper2022/issues
+Depends: R (>= 3.4.0)
+Imports:
+    dplyr,
+    ggplot2,
+    data.table,
+    stargazer,
+    RColorBrewer,
+    reshape2,
+    here,
+    modules,
+    magrittr
+Suggests: 
+    pkgdown (== 1.5.1),
+    testthat,
+    rprojroot,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Encoding: UTF-8
