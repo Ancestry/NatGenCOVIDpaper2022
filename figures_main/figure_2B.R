@@ -24,6 +24,7 @@ pheno_list <- c("COVIDHOSPITALIZED_2COVIDHOSP_1COVIDNOHOSP" ,
                 "COVIDWITHPOSITIVEHOUSEMATEPOP_2POPULATION_1COVIDNEGWITHEXP",
                 "COVID_SEVERITY_CONTINUOUS_PC")
 
+
 replicate_regn_leadsnps <- NULL
 for(pheno in pheno_list){
   phenotype_name=pheno
@@ -140,6 +141,7 @@ regn_rep <- replicate_regn_leadsnps %>%
   rename(SNP=MarkerName)%>%
   data.frame()
 
+
 regn_rep <- left_join(regn_rep, regn, by=c("CHR", "BP", "SNP"))
 regn_rep <- regn_rep %>% mutate(Reported_Beta=ifelse(Allele1==Effect_Allele, Reported_Beta, -Reported_Beta))
 regn_rep <- regn_rep %>% filter(Use==1) %>%
@@ -168,6 +170,7 @@ rep_mat$Phenotype[rep_mat$Phenotype=="COVIDWITHPOSITIVEHOUSEMATEPOP_2POPULATION_
 rep_mat$Phenotype[rep_mat$Phenotype=="MILDASYMPTOMATICCOVID_2SYMPTOMATIC_1MILDASYMPTOMATIC"] <- "Symptomatic/Paucisymptomatic"
 rep_mat$Phenotype[rep_mat$Phenotype=="COVID_SEVERITY_CONTINUOUS_PC"] <- "Continuous_Severity_Score"
 
+
 #update the genotype names
 rep_mat <- rep_mat %>% rename("ABO (rs505922)"="ABO-9:136149229:T:C") %>%
   #rename("ACSF3 (rs4782327)"="ACSF3-16:89184135:G:C") %>%
@@ -193,7 +196,6 @@ rep_mat <- data.matrix(rep_mat)
 newnames <- lapply(
   rownames(rep_mat),
   function(x) bquote(italic(.(x))))
-
 
 
 library(pheatmap)
