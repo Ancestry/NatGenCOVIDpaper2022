@@ -1,0 +1,140 @@
+---
+title: "The phenoreportr Tutorial: Using phenoreportr Command Line Interface"
+author: "Andrey Smelter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The phenoreportr Tutorial: Using phenoreportr Command Line Interface}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The `phenoreportr` package provides functions to clean phenotypes and generate phenotype report(s).
+
+## Command Line Interface
+
+```
+phenoreportr command-line interface
+
+Generate clean phenotypes.
+Generate phenotype report.
+
+Usage:
+    phenoreport.R process phenotypes --survey=<file> --pheno=<path> --trait=<name>...
+    phenoreport.R process report --survey=<file> --pheno=<path> --ethnicity=<path> --trait=<name>... 
+                  [--cohorts=<default>] [--format=<type>] [--dir=<path>] 
+    phenoreport.R list phenotypes
+    phenoreport.R -h | --help
+    phenoreport.R -v | --version
+
+Options:
+    -e, --ethnicity=<path>   Path to ethnicity cohorts.
+    -f, --format=<type>      The R Markdown output format to convert to [default: html_document]
+    -d, --dir=<path>         The output directory for the rendered output_file.
+    -p, --pheno=<path>       Phenotype path.
+    -s, --survey=<file>      Path to survey file.
+    -t, --trait=<name>       Name of the trait.
+    -c, --cohorts=<default>  Default cohorts [default: Europe.idvs:EUR,African_American.idvs:AA,Latino.idvs:LAT,East_Asia.idvs:EAS]
+    -h, --help               Show this help message.
+    -v, --version            Show package version.
+```
+
+## Find `phenoreportr` CLI executable
+
+To find `phenoreport.R` executable start your `R` shell and type:
+
+```{r, eval = FALSE}
+shQuote(system.file("exec", "phenoreport.R", package = "phenoreportr"))
+```
+
+Output:
+
+```
+"/path/to/phenoreportr/exec/phenoreport.R"
+```
+
+## Print `phenoreportr` CLI help message
+
+```{r, engine = "bash", eval = FALSE}
+Rscript /path/to/phenoreportr/exec/phenoreport.R --help
+```
+
+## Print `phenoreportr` package version
+
+```{r, engine = "bash", eval = FALSE}
+Rscript /path/to/phenoreportr/exec/phenoreport.R --version
+```
+
+## Set paths to common directories
+
+For convenience set paths to phenotypes, ethnicity directory locations, and survey file location:
+
+```{r, engine = "bash", eval = FALSE}
+export PHENO_PATH=/path/to/phenos
+export ETHNICITY_PATH=/path/to/eth
+export SURVEY_FILE=/path/to/survey
+export COVID_SURVEY_FILE=/path/to/covid/survey
+```
+
+## List phenotypes that are available for cleaning
+
+To list phenotypes that are available for cleaning, run the `list phenotypes` cpmmand:
+
+```{r, engine = "bash", eval = FALSE}
+Rscript /path/to/phenoreportr/exec/phenoreport.R list phenotypes
+```
+
+This will return names of the phenotypes (and phenotype cleaning scripts) that
+are currently available: 
+
+```
+[1] "COVIDHOSPITALIZED_2COVIDHOSP_1COVIDNOHOSP"                 
+[2] "COVIDHOSPITALIZEDPOP_2COVIDHOSP_1POPULATION"               
+[3] "COVIDSWABTEST_2COVIDPOS_1COVIDNEG"                         
+[4] "COVIDSWABTESTPOP_2COVIDPOS_1POPULATION"                    
+[5] "COVIDWITHPOSITIVEHOUSEMATE_2COVIDPOS_1COVIDNEG"            
+[6] "COVIDWITHPOSITIVEHOUSEMATEPOP_2POPULATION_1COVIDNEGWITHEXP"
+[7] "MILDASYMPTOMATICCOVID_2SYMPTOMATIC_1MILDASYMPTOMATIC"
+```
+
+## Generate clean phenotype files
+
+To generate clean phenotype files (`.tsv` and `.pheno`), use the following command:
+
+```{r, engine = "bash", eval = FALSE}
+Rscript  /path/to/phenoreportr/exec/phenoreport.R process phenotypes \ 
+-s $COVID_SURVEY_FILE -p /output/directory \
+-t COVIDHOSPITALIZED_2COVIDHOSP_1COVIDNOHOSP
+```
+
+This command will generate `.tsv` and `.pheno` for `COVIDHOSPITALIZED_2COVIDHOSP_1COVIDNOHOSP`
+phenotype at the specified output directory.
+
+To generate more than one phenotype, just repeat the phenotype name:
+
+```{r, engine = "bash", eval = FALSE}
+Rscript  /path/to/phenoreportr/exec/phenoreport.R process phenotypes \ 
+-s $COVID_SURVEY_FILE -p /output/directory \
+-t COVIDHOSPITALIZED_2COVIDHOSP_1COVIDNOHOSP \
+-t COVIDHOSPITALIZEDPOP_2COVIDHOSP_1POPULATION
+```
+
+
+## Generate phenotype report
+
+To generate report for the phenotype of interest, use the following command:
+
+```{r, engine = "bash", eval = FALSE}
+Rscript path/to/phenoreportr/exec/phenoreport.R process report \
+-s $SURVEY_FILE -p $PHENO_PATH -e $ETHNICITY_PATH \
+-t HYPERTENSIONFAMILYHIST_2HTWITHFH_1NOHTNOFH
+```
+
+To generate reports for more than one phenotype, just repeat the phenotype name:
+
+```{r, engine = "bash", eval = FALSE}
+Rscript path/to/phenoreportr/exec/phenoreport.R process report \ 
+-s $SURVEY_FILE -p $PHENO_PATH -e $ETHNICITY_PATH \
+-t HYPERTENSIONFAMILYHIST_2HTWITHFH_1NOHTNOFH -t ANYNUTALLERGY_2YES_1NO
+```
+
