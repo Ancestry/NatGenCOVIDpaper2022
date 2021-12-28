@@ -1,5 +1,7 @@
 # NatGenCOVIDpaper2022
 
+[![DOI](https://zenodo.org/badge/442314191.svg)](https://zenodo.org/badge/latestdoi/442314191)
+
 ## Source code:
 
 * Figures source code: [link](https://github.com/Ancestry/NatGenCOVIDpaper2022/tree/main/figures_main)
