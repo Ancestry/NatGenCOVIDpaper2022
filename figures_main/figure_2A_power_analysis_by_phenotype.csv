@@ -1,0 +1,15 @@
+Phenotype,Cases,Controls,Prevalence,Control_Ratio,Control_type,Alpha,MAF 0.01,MAF 0.05,MAF 0.10,MAF 0.20,MAF 0.30,MAF 0.40,MAF 0.50
+Hospitalized/Not_Hospitalized,474,4159,0.1,8.8,Screened,0.05,0.1267,0.4143,0.6589,0.8689,0.9313,0.9492,0.9482
+Hospitalized/Not_Hospitalized,474,4159,0.1,8.8,Screened,5.00E-08,1.74E-06,0.0001049,0.001029,0.008896,0.02244,0.03187,0.0312
+Hospitalized/Unscreened,474,99198,0.1,209.3,Unscreened,0.05,0.1186,0.3789,0.612,0.8312,0.9039,0.9262,0.925
+Hospitalized/Unscreened,474,99198,0.1,209.3,Unscreened,5.00E-08,1.40E-06,7.25E-05,0.0006724,0.005667,0.01437,0.02053,0.02009
+Positive/Negative,5373,35901,0.13,6.7,Screened,0.05,0.7875,1,1,1,1,1,1
+Positive/Negative,5373,35901,0.13,6.7,Screened,5.00E-08,0.003534,0.7009,0.9962,1,1,1,1
+Positive/Unscreened,5373,95027,0.13,17.7,Unscreened,0.05,0.7006,0.9997,1,1,1,1,1
+Positive/Unscreened,5373,95027,0.13,17.7,Unscreened,5.00E-08,0.001512,0.4766,0.9702,1,1,1,1
+Exposed_Positive/Exposed_Negative,1060,2022,0.34,1.9,Screened,0.05,0.288,0.8588,0.9848,0.9997,1,1,1
+Exposed_Positive/Exposed_Negative,1060,2022,0.34,1.9,Screened,5.00E-08,2.63E-05,0.007837,0.09236,0.4657,0.7085,0.7922,0.7876
+Unscreened/Exposed_Negative,1060,98507,0.34,92.9,Unscreened,0.05,0.2056,0.6916,0.9169,0.9916,0.9982,0.9991,0.9991
+Unscreened/Exposed_Negative,1060,98507,0.34,92.9,Unscreened,5.00E-08,8.33E-06,0.001393,0.01756,0.1355,0.2791,0.3556,0.3509
+Symptomatic/Paucisymptomatic,391,4353,0.08,11.1,Screened,0.05,0.1115,0.3468,0.5666,0.7902,0.8716,0.8981,0.8965
+Symptomatic/Paucisymptomatic,391,4353,0.08,11.1,Screened,5.00E-08,1.47E-06,5.16E-05,0.0004446,0.003636,0.009208,0.01318,0.0129
