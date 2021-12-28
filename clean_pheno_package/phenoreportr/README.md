@@ -6,7 +6,7 @@ reports for phenotypes of interest.
 
 ## Links
 
-* `phenoreportr` [@GitHub](https://github.com/Ancestry/NatGenCOVIDpaper2022/clean_pheno_package/phenoreportr)
+* `phenoreportr` [@GitHub](https://github.com/Ancestry/NatGenCOVIDpaper2022/tree/main/clean_pheno_package/phenoreportr)
 * `phenoreportr` [@Documentation](https://ancestry.github.io/NatGenCOVIDpaper2022/)
 
 
