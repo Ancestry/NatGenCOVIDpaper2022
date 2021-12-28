@@ -31,8 +31,8 @@ Next, install the package from R console:
 
 The `phenoreportr` documentation:
 
-* [Using phenoreportr Command Line Interface](https://ancestry.github.io/NatGenCOVIDpaper2022/)
-* [Development Documentation](https://ancestry.github.io/NatGenCOVIDpaper2022/)
-* [API Reference](https://ancestry.github.io/NatGenCOVIDpaper2022/)
-* [Changelog](https://ancestry.github.io/NatGenCOVIDpaper2022/)
+* [Using phenoreportr Command Line Interface](https://ancestry.github.io/NatGenCOVIDpaper2022/articles/tutorial.html)
+* [Development Documentation](https://ancestry.github.io/NatGenCOVIDpaper2022/articles/development.html)
+* [API Reference](https://ancestry.github.io/NatGenCOVIDpaper2022/reference/index.html)
+* [Changelog](https://ancestry.github.io/NatGenCOVIDpaper2022/news/index.html)
 
