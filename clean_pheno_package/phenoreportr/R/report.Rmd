@@ -1,0 +1,72 @@
+---
+title: Automatic Trair Report
+output: html_document
+date: "`r format(Sys.time(), '%d %B %Y')`"
+params:
+  survey_file: ""
+  pheno_path: ""
+  ethnicity_path: ""
+  default_cohorts: ""
+  trait_name: ""
+---
+
+---
+subtitle: "Trait: `r params$trait_name`"
+---
+
+```{r setup, include=FALSE}
+
+#load libraries
+library(dplyr)
+library(ggplot2)
+library(data.table)
+library(stargazer)
+library(RColorBrewer)
+library(reshape2)
+library(here)
+```
+
+
+```{r preparing input, echo=FALSE}
+library(phenoreportr)
+
+prepared_data = phenoreportr::load_data(
+  survey_path = params$survey_file, 
+  ethnicity_path = params$ethnicity_path, 
+  pheno_path = params$pheno_path, 
+  trait_name = params$trait_name, 
+  default_cohorts = params$default_cohorts
+)
+
+joined_survey = prepared_data$data
+questions = prepared_data$questions
+```
+
+
+##Cleaned Phenotype Prevalence and Sample Sizes
+```{r cleaned sample size, echo=FALSE}
+phenoreportr::prevalence_table(data = joined_survey)
+```
+
+
+##Raw Response Sample Size by Question
+```{r response sample size by question, echo=FALSE}
+phenoreportr::response_sample_size_by_question_table(data = joined_survey, questions = questions)
+```
+
+
+##Raw Responses Combined
+```{r response sample size combined, echo=FALSE}
+phenoreportr::response_combined_table(data = joined_survey)
+```
+
+
+##Plot Cleaned Phenotype Sample Sizes by Individual Question Responses
+```{r sample size by response, echo=FALSE}
+phenoreportr::phenotype_sample_size_by_response_plot(data = joined_survey, questions = questions)
+```
+
+##Prevalence plots
+```{r prevalence plots, echo=FALSE}
+phenoreportr::prevalence_plot(data = joined_survey)
+```
